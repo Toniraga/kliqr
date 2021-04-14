@@ -60,11 +60,15 @@
 .tile-pic  {
   height: 45px;
   width: 45px;
+  border-radius: 50%;
 }
 .tile-para {
   font-size: 20px;
   margin-left: 15px;
   width: 100% !important;
+}
+.panel-list {
+  overflow-y: scroll;
 }
 .dot {
   width: 3px;
@@ -96,6 +100,7 @@
 .bio-pic {
   width: 100px;
   align-self: center;
+  border-radius: 50%;
 }
 
 .bio-name {
@@ -191,7 +196,7 @@
   width: 100% !important;
 }
 
-.info-bio:hover {
+.info-bio:hover, .active {
   background: rgba(231, 236, 237, 0.5);
   cursor: pointer;
 }

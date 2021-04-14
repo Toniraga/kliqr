@@ -12,22 +12,30 @@ import './App.css';
 
 function App() {
   const [ userInfo, setUserInfo ] = React.useState(users[0]);
+  const [active, setActive] = React.useState(0);
   return (
     <div className='App'>
       <div className='blue-top' />
       <div className='main'> 
         <div className='side-panel no-scrollbar'>
           <p className='panel-cap'> USERS </p>
-          {users.map((user) => (
-            <div key={user.id}>
-              <User onClick={setUserInfo} user={user} />
-            </div>
-          ))}
+          <div className='panel-list no-scrollbar'>
+            {users.map((user, i) => (
+              <div key={user.id}>
+                <User 
+                  onClick={setUserInfo} 
+                  user={user} 
+                  index={i} 
+                  active={active}
+                  setActive={setActive} />
+              </div>
+            ))}
+          </div>
         </div>
         {userInfo && (
           <div className='bio-page'>
             <div className='bio-main'>
-              <img src={profilePic} className='bio-pic' alt='profile' />
+              <img src={userInfo?.img} className='bio-pic' alt='profile' />
               <p className='bio-name'> { userInfo.name } </p>
               <div className='bio-seen'> <span>{userInfo.trans}  Transactions </span> . <span> Joined  2 months ago</span> 
               </div>
@@ -64,7 +72,7 @@ function App() {
               <div className='info-users'> 
                 <p className='info-cap'> USERS LIKE   “Jude Agboola” </p>
                 <div className='info-bio'>
-                  <img src={profilePic} className='tile-pic' alt='profile' />
+                  <img src='https://randomuser.me/api/portraits/women/86.jpg' className='tile-pic' alt='profile' />
                   <div className='tile-para'>
                     <p>Jude Agboola</p>
                     <p><span> 300  Transactions</span> . <span>Joined  2 months ago</span> </p>
